@@ -15,6 +15,7 @@ git clone [https://github.com/vincula1/employeetracker]
 npm i inquirer@8.2.4
 3. **Set Up MySQL Database**: Use the provided schema to set up your database.
 4. **Run the Application**: 
+node app.js
 
 ## Usage
 Upon launching the application, choose from various options to view, add, or update data in the database. Follow the on-screen prompts to perform your desired actions.
