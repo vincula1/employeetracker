@@ -1,5 +1,9 @@
+// Require needed packages and files
+
 const inquirer = require('inquirer');
 const connection = require('./connection');
+
+// Function that runs when you select get employee option from menu
 
 function getAllEmployees() {
     connection.query('SELECT * FROM employee', (err, results) => {
@@ -12,6 +16,8 @@ function getAllEmployees() {
     });
 }
 
+// Function that runs when you select view all departments option from menu
+
 function viewAllDepartments() {
     connection.query('SELECT id, name FROM department', (err, results) => {
         if (err) {
@@ -22,6 +28,8 @@ function viewAllDepartments() {
         mainMenu();
     });
 }
+
+// Function that runs when you select view all roles option from menu
 
 function viewAllRoles() {
     const query = `
@@ -38,6 +46,8 @@ function viewAllRoles() {
         mainMenu();
     });
 }
+
+// Function that runs when you select add department option from menu
 
 function addDepartment() {
     inquirer.prompt([
@@ -63,6 +73,8 @@ function addDepartment() {
         console.error('Error:', error);
     });
 }
+
+// Function that runs when you select add role option from menu
 
 function addRole() {
     connection.query('SELECT id, name FROM department', (err, departments) => {
@@ -107,6 +119,8 @@ function addRole() {
         });
     });
 }
+
+// Function that runs when you select add employee option from menu
 
 function addEmployee() {
     const queryRoles = 'SELECT id, title FROM role';
@@ -161,6 +175,8 @@ function addEmployee() {
     });
 }
 
+// Function that runs when you select update employee role option from menu
+
 function updateEmployeeRole() {
     const queryEmployees = 'SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employee';
     const queryRoles = 'SELECT id, title FROM role';
@@ -201,6 +217,8 @@ function updateEmployeeRole() {
         console.error('Error fetching employees or roles:', error);
     });
 }
+
+// The main menu funtion, that utilizes inquirer to ask question then runs functions based off what you chose
 
 function mainMenu() {
     inquirer.prompt([
